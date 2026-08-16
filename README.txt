@@ -1,30 +1,29 @@
-UNDANGAN ALVIYAN & DINDA — VERSI WEBSITE PROFESIONAL
+UNDANGAN ALVIYAN & DINDA — ROMANTIC EDITION
 
-Palette mengikuti undangan terakhir:
-- Cream / ivory
-- Powder blue
-- Soft gold
-- Warm brown
+PERUBAHAN UTAMA
+1. Cover depan memakai gambar terbaru yang Anda kirim.
+2. Setelah klik BUKA UNDANGAN, website masuk ke tema romantis ivory + powder blue + soft gold.
+3. Gambar undangan versi sebelumnya dipakai pada bagian "Undangan Pernikahan" dan Galeri.
+4. Ada background romantis custom (romantic-bg.svg) berupa cahaya lembut, bokeh, lengkungan emas dan nuansa powder blue.
+5. Ada animasi kelopak/bunga, glass card, frame emas, countdown, acara, lokasi, RSVP dan tombol musik.
 
-File:
+FILE
 - index.html
 - styles.css
 - script.js
-- undangan-cover.png
+- cover-depan.png          = cover terbaru
+- undangan-dalam.png       = gambar undangan sebelumnya
+- romantic-bg.svg          = background dekoratif
 
-Cara upload ke GitHub:
-1. Ekstrak ZIP.
-2. Upload semua file di atas ke root repository.
-3. Jika file lama memiliki nama sama, pilih Replace/overwrite.
-4. Commit changes.
-5. Tunggu Actions > pages build and deployment menjadi Success.
-6. Buka website GitHub Pages dan lakukan hard refresh (Ctrl+Shift+R).
-
-MUSIK:
-Website sudah siap memainkan file bernama river-flows-in-you.mp3 setelah tombol BUKA UNDANGAN ditekan.
-Rekaman "River Flows in You" karya Yiruma tidak disertakan karena berhak cipta.
-Jika Anda memiliki file audio yang sah/berlisensi untuk penggunaan web, letakkan file tersebut di root dengan nama:
+MUSIK
+Website siap memainkan file bernama:
+river-flows-in-you.mp3
+setelah tombol BUKA UNDANGAN diklik.
+File rekaman lagu tidak disertakan karena hak cipta. Jika Anda mempunyai file yang sah/berlisensi, letakkan MP3 tersebut di root repository dengan nama persis:
 river-flows-in-you.mp3
 
-RSVP:
-Versi ini menyimpan RSVP di browser pengunjung (localStorage). Jika ingin semua RSVP masuk ke satu Google Sheet, tahap berikutnya dapat dihubungkan ke Google Apps Script/Google Sheets.
+GITHUB
+Upload semua file ke root repository, replace file lama, Commit changes, lalu tunggu GitHub Pages selesai build.
+
+RSVP
+RSVP saat ini disimpan di browser pengunjung. Untuk RSVP terpusat ke Google Sheets, dapat ditambahkan pada versi berikutnya.

@@ -3,183 +3,121 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f5efe6">
+<meta name="theme-color" content="#f6efe5">
 <title>Alviyan & Dinda — The Wedding</title>
 <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="locked">
 
-<!-- COVER / OPENING -->
-<section class="opening" id="opening">
-  <div class="opening-flower f1">✿</div>
-  <div class="opening-flower f2">❀</div>
-  <div class="cover">
-    <img src="undangan-cover.png" alt="Undangan pernikahan Alviyan dan Dinda">
-    <div class="cover-overlay">
-      <button class="open-btn" id="openBtn">BUKA UNDANGAN</button>
-      <p>7 NOVEMBER 2026</p>
-    </div>
+<section class="cover-screen" id="coverScreen">
+  <div class="cover-shine"></div>
+  <img class="front-cover" src="cover-depan.png" alt="Undangan Alviyan dan Dinda">
+  <div class="cover-bottom">
+    <div class="to-line">THE WEDDING OF</div>
+    <button id="openInvitation" class="open-btn">♡ BUKA UNDANGAN ♡</button>
+    <div class="cover-date">7 · NOVEMBER · 2026</div>
   </div>
+  <div class="cover-hint">Geser / klik untuk membuka</div>
 </section>
 
-<!-- AUDIO: tambahkan file river-flows-in-you.mp3 jika Anda memiliki hak/lisensi penggunaannya -->
 <audio id="music" loop preload="auto">
   <source src="river-flows-in-you.mp3" type="audio/mpeg">
 </audio>
 
-<header class="topbar">
-  <a class="monogram" href="#home">A <span>&amp;</span> D</a>
+<div id="site">
+<header class="nav">
+  <a href="#home" class="brand">A <i>&amp;</i> D</a>
   <nav>
-    <a href="#home">Home</a>
-    <a href="#couple">Mempelai</a>
-    <a href="#event">Acara</a>
-    <a href="#gallery">Galeri</a>
-    <a href="#location">Lokasi</a>
-    <a href="#rsvp">RSVP</a>
+    <a href="#home">Home</a><a href="#couple">Mempelai</a><a href="#story">Undangan</a>
+    <a href="#event">Acara</a><a href="#gallery">Galeri</a><a href="#location">Lokasi</a><a href="#rsvp">RSVP</a>
   </nav>
-  <button class="music-btn" id="musicBtn" aria-label="Putar atau jeda musik">♫</button>
+  <button id="musicBtn" class="music">♫</button>
 </header>
 
-<main id="content">
-
-<section id="home" class="hero section-blue">
-  <div class="floating-petal petal1">❀</div>
-  <div class="floating-petal petal2">✿</div>
-  <div class="hero-inner">
-    <p class="kicker">THE WEDDING OF</p>
+<section id="home" class="hero">
+  <div class="petals p1">❀</div><div class="petals p2">✿</div><div class="petals p3">❁</div>
+  <div class="hero-card">
+    <div class="eyebrow">THE WEDDING OF</div>
     <h1>Alviyan <span>&amp;</span> Dinda</h1>
-    <div class="ornament">──── ◆ ────</div>
-    <p class="hero-date">SABTU · 7 NOVEMBER 2026</p>
-    <p class="hero-copy">Dengan rahmat Tuhan Yang Maha Esa, kami bermaksud menyelenggarakan acara pernikahan putra dan putri kami.</p>
-    <a class="gold-btn" href="#couple">Lihat Undangan</a>
+    <div class="gold-line">───── ❦ ─────</div>
+    <p class="date">07 · 11 · 2026</p>
+    <p class="intro">Dengan rahmat Tuhan Yang Maha Esa, kami bermaksud menyelenggarakan acara pernikahan putra dan putri kami.</p>
+    <a href="#story" class="btn">Baca Undangan</a>
   </div>
 </section>
 
 <section id="couple" class="section cream">
-  <div class="section-heading">
-    <p class="kicker">THE COUPLE</p>
-    <h2>Dengan penuh kebahagiaan</h2>
-    <div class="small-ornament">❦</div>
+  <div class="heading"><span>THE COUPLE</span><h2>Dua hati, satu perjalanan</h2><b>❦</b></div>
+  <div class="couple">
+    <article><small>PUTRA DARI</small><h3>Alm. Johnny Wijaya<br>&amp; Ibu Lauw Lin Nio</h3></article>
+    <div class="heart">♡</div>
+    <article><small>PUTRI DARI</small><h3>Alm. Bahrudin<br>&amp; Ibu Dahwati Rais</h3></article>
   </div>
-
-  <div class="couple-grid">
-    <article class="person">
-      <span class="label">PUTRA DARI</span>
-      <h3>Alm. Johnny Wijaya<br>&amp; Ibu Lauw Lin Nio</h3>
-    </article>
-    <div class="amp">&amp;</div>
-    <article class="person">
-      <span class="label">PUTRI DARI</span>
-      <h3>Alm. Bahrudin<br>&amp; Ibu Dahwati Rais</h3>
-    </article>
-  </div>
-
-  <div class="names">
-    <h3>Alviyan Cahyadi, S.E., M.M.</h3>
-    <div>&amp;</div>
-    <h3>Dinda Nurul Maulida, S.Si</h3>
-  </div>
+  <div class="names"><h3>Alviyan Cahyadi, S.E., M.M.</h3><div>&amp;</div><h3>Dinda Nurul Maulida, S.Si</h3></div>
 </section>
 
-<section id="event" class="section blue">
-  <div class="section-heading">
-    <p class="kicker">SAVE THE DATE</p>
-    <h2>Rangkaian Acara</h2>
-    <div class="small-ornament">❦</div>
+<section id="story" class="section blue">
+  <div class="heading"><span>OUR INVITATION</span><h2>Undangan Pernikahan</h2><b>❦</b></div>
+  <div class="invitation-frame">
+    <div class="frame-glow"></div>
+    <img src="undangan-dalam.png" alt="Undangan pernikahan Alviyan dan Dinda versi sebelumnya">
   </div>
+  <p class="caption">Sebuah kenangan visual dari undangan kami.</p>
+</section>
 
+<section id="event" class="section event">
+  <div class="heading"><span>SAVE THE DATE</span><h2>Hari Bahagia Kami</h2><b>❦</b></div>
   <div class="countdown">
-    <div><b id="days">0</b><span>Hari</span></div>
-    <div><b id="hours">0</b><span>Jam</span></div>
-    <div><b id="minutes">0</b><span>Menit</span></div>
-    <div><b id="seconds">0</b><span>Detik</span></div>
+    <div><strong id="days">0</strong><span>Hari</span></div>
+    <div><strong id="hours">0</strong><span>Jam</span></div>
+    <div><strong id="minutes">0</strong><span>Menit</span></div>
+    <div><strong id="seconds">0</strong><span>Detik</span></div>
   </div>
-
-  <div class="event-cards">
-    <article>
-      <div class="icon">✦</div>
-      <span class="label">SABTU</span>
-      <strong>7 NOVEMBER 2026</strong>
-    </article>
-    <article>
-      <div class="icon">◈</div>
-      <span class="label">AKAD NIKAH</span>
-      <strong>08.30 WIB</strong>
-    </article>
-    <article>
-      <div class="icon">❧</div>
-      <span class="label">JAMUAN AKAD</span>
-      <strong>10.00 – 12.00 WIB</strong>
-    </article>
+  <div class="events">
+    <article><div class="event-icon">♢</div><small>SABTU</small><h3>7 NOVEMBER 2026</h3></article>
+    <article><div class="event-icon">♡</div><small>AKAD NIKAH</small><h3>08.30 WIB</h3></article>
+    <article><div class="event-icon">✦</div><small>JAMUAN AKAD</small><h3>10.00 – 12.00 WIB</h3></article>
   </div>
 </section>
 
-<section class="section cream invitation-note">
-  <div class="flower-corner">❀</div>
-  <div class="section-heading">
-    <p class="kicker">A SPECIAL DAY</p>
-    <h2>Merupakan suatu kebahagiaan<br>dan kehormatan bagi kami</h2>
-  </div>
-  <p>Apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu kepada kami, kehadiran Anda akan menjadi bagian yang berarti dalam hari bahagia kami.</p>
-  <div class="signature">Alviyan <span>&amp;</span> Dinda</div>
+<section class="section message cream">
+  <div class="bokeh b1"></div><div class="bokeh b2"></div>
+  <div class="heading"><span>WITH LOVE</span><h2>Dengan penuh kebahagiaan</h2><b>❦</b></div>
+  <p>Merupakan suatu kebahagiaan dan kehormatan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu kepada kami.</p>
+  <div class="signature">Alviyan <i>&amp;</i> Dinda</div>
 </section>
 
-<section id="gallery" class="section gallery blue">
-  <div class="section-heading">
-    <p class="kicker">OUR INVITATION</p>
-    <h2>Galeri</h2>
-    <div class="small-ornament">❦</div>
-  </div>
-  <div class="gallery-main">
-    <img src="undangan-cover.png" alt="Desain undangan Alviyan dan Dinda">
-  </div>
+<section id="gallery" class="section blue gallery">
+  <div class="heading"><span>MEMORIES</span><h2>Galeri</h2><b>❦</b></div>
+  <div class="gallery-card"><img src="undangan-dalam.png" alt="Detail undangan"></div>
 </section>
 
 <section id="location" class="section cream">
-  <div class="section-heading">
-    <p class="kicker">LOCATION</p>
-    <h2>Ibis Style Jatibening</h2>
-    <div class="small-ornament">❦</div>
-  </div>
+  <div class="heading"><span>THE VENUE</span><h2>Ibis Style Jatibening</h2><b>❦</b></div>
   <div class="location-card">
-    <div class="map-pin">⌖</div>
+    <div class="pin">⌖</div>
     <p>Jl. Caman Raya No.21,<br>Jatibening Baru, Kec. Pondokgede,<br>Kota Bekasi, Jawa Barat 17412</p>
-    <a class="gold-btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Ibis+Style+Jatibening+Jl.+Caman+Raya+No.21+Bekasi">Buka Google Maps</a>
+    <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Ibis+Style+Jatibening+Jl.+Caman+Raya+No.21+Bekasi">Buka Google Maps</a>
   </div>
 </section>
 
 <section id="rsvp" class="section blue">
-  <div class="section-heading">
-    <p class="kicker">RSVP</p>
-    <h2>Konfirmasi Kehadiran</h2>
-    <div class="small-ornament">❦</div>
-  </div>
-
-  <form class="rsvp-form" id="rsvpForm">
+  <div class="heading"><span>RSVP</span><h2>Konfirmasi Kehadiran</h2><b>❦</b></div>
+  <form id="rsvpForm">
     <input id="guestName" required placeholder="Nama Anda">
-    <select id="attendance" required>
-      <option value="">Pilih konfirmasi</option>
-      <option>Hadir</option>
-      <option>Tidak Hadir</option>
-      <option>Masih Ragu</option>
-    </select>
+    <select id="attendance" required><option value="">Konfirmasi kehadiran</option><option>Hadir</option><option>Tidak Hadir</option><option>Masih Ragu</option></select>
     <input id="guestCount" type="number" min="1" max="10" value="1" required placeholder="Jumlah tamu">
     <textarea id="guestMessage" rows="4" maxlength="300" placeholder="Ucapan untuk Alviyan & Dinda (opsional)"></textarea>
-    <button class="gold-btn" type="submit">Kirim Konfirmasi</button>
+    <button class="btn" type="submit">Kirim Konfirmasi</button>
   </form>
-
-  <div class="rsvp-result" id="rsvpResult"></div>
-  <p class="small-note">Catatan: versi GitHub gratis ini menyimpan data RSVP di browser perangkat pengunjung. Untuk mengumpulkan semua RSVP ke satu tempat, kita bisa menghubungkannya ke Google Sheets pada tahap berikutnya.</p>
+  <div id="rsvpResult" class="result"></div>
+  <p class="note">Versi GitHub Pages ini menyimpan RSVP di browser pengunjung. Data terpusat ke Google Sheets dapat ditambahkan pada tahap berikutnya.</p>
 </section>
 
-<section class="section closing cream">
-  <div class="closing-flowers">❀ ❁ ❀</div>
-  <p class="kicker">TERIMA KASIH</p>
-  <h2>Alviyan <span>&amp;</span> Dinda</h2>
-  <p>7 · 11 · 2026</p>
-</section>
-
-</main>
+<footer class="footer">
+  <div>❀</div><h2>Alviyan <i>&amp;</i> Dinda</h2><p>7 · 11 · 2026</p>
+</footer>
+</div>
 
 <script src="script.js"></script>
 </body>
