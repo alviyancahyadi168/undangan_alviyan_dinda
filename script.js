@@ -39,7 +39,7 @@ rsvpForm.addEventListener('submit',e=>{
  const attendance=document.getElementById('attendance').value;
  const count=document.getElementById('guestCount').value;
  if(!name||!attendance||!count){rsvpResult.textContent='Mohon lengkapi nama, kehadiran, dan jumlah tamu.';return;}
- rsvpForm.target='rsvpSubmitFrame'; rsvpForm.action=RSVP_ENDPOINT; rsvpForm.method='POST';
+ rsvpForm.target='rsvpSubmitFrame'; rsvpForm.action=RSVP_ENDPOINT; rsvpForm.method='GET';
  rsvpResult.textContent='Mengirim konfirmasi...';
  const btn=rsvpForm.querySelector('button[type="submit"]'); btn.disabled=true; btn.style.opacity='.65';
  rsvpFrame.onload=()=>{rsvpResult.innerHTML=`Terima kasih, <b>${safe(name)}</b>.<br>Konfirmasi Anda sudah dikirim.`;rsvpForm.reset();document.getElementById('guestCount').value=1;btn.disabled=false;btn.style.opacity='1';};
