@@ -27,3 +27,30 @@ Upload semua file ke root repository, replace file lama, Commit changes, lalu tu
 
 RSVP
 RSVP saat ini disimpan di browser pengunjung. Untuk RSVP terpusat ke Google Sheets, dapat ditambahkan pada versi berikutnya.
+
+
+VERSI VIDEO
+Video tampil di bagian MEMORIES sebelum gambar undangan. Video memiliki:
+- poster cover
+- kontrol play/pause, volume, fullscreen
+- tampilan responsif HP/laptop
+- frame dan ornamen emas yang mengikuti tema website
+
+CATATAN GITHUB
+File MP4 bisa berukuran besar. GitHub memiliki batas ukuran file dan repository. Jika upload ditolak karena ukuran video, gunakan Git LFS atau lebih baik host video di layanan video/storage lalu embed ke website.
+
+
+VERSI YOUTUBE
+Video Memories sekarang menggunakan YouTube:
+https://youtu.be/rAjjtoNQXFM
+
+File MP4 lokal sudah dihapus dari website agar repository GitHub tetap ringan.
+Video ditampilkan dengan YouTube embed dan tetap berada di dalam frame Memories bertema ivory, powder blue, dan soft gold.
+
+PENTING
+Agar video dapat diputar dari website:
+- YouTube "Tidak Publik / Unlisted" = bisa di-embed.
+- YouTube "Publik" = bisa di-embed.
+- YouTube "Pribadi / Private" = tidak dapat diputar oleh pengunjung umum.
+
+Jika nanti Anda mengubah video atau link YouTube, cukup ubah bagian src iframe di index.html.
