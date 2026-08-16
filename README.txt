@@ -54,3 +54,8 @@ Agar video dapat diputar dari website:
 - YouTube "Pribadi / Private" = tidak dapat diputar oleh pengunjung umum.
 
 Jika nanti Anda mengubah video atau link YouTube, cukup ubah bagian src iframe di index.html.
+
+
+UPDATE
+Gambar undangan setelah video YouTube pada bagian MEMORIES sudah dihapus.
+Bagian Memories sekarang hanya menampilkan video YouTube, kemudian dilanjutkan ke bagian berikutnya.
