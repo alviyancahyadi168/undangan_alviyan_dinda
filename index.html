@@ -123,14 +123,18 @@
 <section id="rsvp" class="section blue">
   <div class="heading"><span>RSVP</span><h2>Konfirmasi Kehadiran</h2><b>❦</b></div>
   <form id="rsvpForm">
-    <input id="guestName" required placeholder="Nama Anda">
-    <select id="attendance" required><option value="">Konfirmasi kehadiran</option><option>Hadir</option><option>Tidak Hadir</option><option>Masih Ragu</option></select>
-    <input id="guestCount" type="number" min="1" max="10" value="1" required placeholder="Jumlah tamu">
-    <textarea id="guestMessage" rows="4" maxlength="300" placeholder="Ucapan untuk Alviyan & Dinda (opsional)"></textarea>
+    <input id="guestName" name="nama" required placeholder="Nama Anda">
+    <select id="attendance" name="kehadiran" required>
+      <option value="">Konfirmasi kehadiran</option><option>Hadir</option><option>Tidak Hadir</option><option>Masih Ragu</option>
+    </select>
+    <input id="guestCount" name="jumlah" type="number" min="1" max="10" value="1" required placeholder="Jumlah tamu">
+    <textarea id="guestMessage" name="ucapan" rows="4" maxlength="300" placeholder="Ucapan untuk Alviyan &amp; Dinda (opsional)"></textarea>
+    <input type="hidden" name="sumber" value="Website Undangan Alviyan &amp; Dinda">
     <button class="btn" type="submit">Kirim Konfirmasi</button>
   </form>
+  <iframe name="rsvpSubmitFrame" id="rsvpSubmitFrame" class="rsvp-submit-frame" title="Pengiriman RSVP" aria-hidden="true"></iframe>
   <div id="rsvpResult" class="result"></div>
-  <p class="note">Versi GitHub Pages ini menyimpan RSVP di browser pengunjung. Data terpusat ke Google Sheets dapat ditambahkan pada tahap berikutnya.</p>
+  <p class="note">Terima kasih. Setelah dikirim, konfirmasi akan dicatat ke daftar RSVP Alviyan &amp; Dinda.</p>
 </section>
 
 <footer class="footer">

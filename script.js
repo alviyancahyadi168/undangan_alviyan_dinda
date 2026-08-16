@@ -29,17 +29,20 @@ function tick(){
 }
 tick();setInterval(tick,1000);
 
-document.getElementById('rsvpForm').addEventListener('submit',e=>{
+const RSVP_ENDPOINT='https://script.google.com/macros/s/AKfycbyy7_xqPgOE0Hf5Xk3GaxZ2ucL5iVrG1ydolPnheoj39Qu316GrC8vJkQxmoKGGeNY_VQ/exec';
+const rsvpForm=document.getElementById('rsvpForm');
+const rsvpFrame=document.getElementById('rsvpSubmitFrame');
+const rsvpResult=document.getElementById('rsvpResult');
+rsvpForm.addEventListener('submit',e=>{
  e.preventDefault();
- const name=document.getElementById('guestName').value;
+ const name=document.getElementById('guestName').value.trim();
  const attendance=document.getElementById('attendance').value;
  const count=document.getElementById('guestCount').value;
- const message=document.getElementById('guestMessage').value;
- const key='alviyanDindaRSVP';
- const arr=JSON.parse(localStorage.getItem(key)||'[]');
- arr.unshift({name,attendance,count,message,time:new Date().toISOString()});
- localStorage.setItem(key,JSON.stringify(arr.slice(0,50)));
- document.getElementById('rsvpResult').innerHTML=`Terima kasih, <b>${safe(name)}</b>.<br>Konfirmasi: <b>${safe(attendance)}</b> untuk ${safe(count)} orang.`;
- e.target.reset();document.getElementById('guestCount').value=1;
+ if(!name||!attendance||!count){rsvpResult.textContent='Mohon lengkapi nama, kehadiran, dan jumlah tamu.';return;}
+ rsvpForm.target='rsvpSubmitFrame'; rsvpForm.action=RSVP_ENDPOINT; rsvpForm.method='POST';
+ rsvpResult.textContent='Mengirim konfirmasi...';
+ const btn=rsvpForm.querySelector('button[type="submit"]'); btn.disabled=true; btn.style.opacity='.65';
+ rsvpFrame.onload=()=>{rsvpResult.innerHTML=`Terima kasih, <b>${safe(name)}</b>.<br>Konfirmasi Anda sudah dikirim.`;rsvpForm.reset();document.getElementById('guestCount').value=1;btn.disabled=false;btn.style.opacity='1';};
+ rsvpForm.submit();
 });
 function safe(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));}

@@ -59,3 +59,8 @@ Jika nanti Anda mengubah video atau link YouTube, cukup ubah bagian src iframe d
 UPDATE
 Gambar undangan setelah video YouTube pada bagian MEMORIES sudah dihapus.
 Bagian Memories sekarang hanya menampilkan video YouTube, kemudian dilanjutkan ke bagian berikutnya.
+
+
+RSVP GOOGLE SHEETS
+Endpoint Apps Script: https://script.google.com/macros/s/AKfycbyy7_xqPgOE0Hf5Xk3GaxZ2ucL5iVrG1ydolPnheoj39Qu316GrC8vJkQxmoKGGeNY_VQ/exec
+Pastikan deployment: Execute as Me; Who has access Anyone.
