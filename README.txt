@@ -42,7 +42,7 @@ File MP4 bisa berukuran besar. GitHub memiliki batas ukuran file dan repository.
 
 VERSI YOUTUBE
 Video Memories sekarang menggunakan YouTube:
-https://www.youtube.com/embed/95jzx_E8b7s
+https://www.youtube-nocookie.com/embed/JJhMCCnzaU4?rel=0&modestbranding=1
 
 File MP4 lokal sudah dihapus dari website agar repository GitHub tetap ringan.
 Video ditampilkan dengan YouTube embed dan tetap berada di dalam frame Memories bertema ivory, powder blue, dan soft gold.
@@ -64,3 +64,11 @@ Bagian Memories sekarang hanya menampilkan video YouTube, kemudian dilanjutkan k
 RSVP GOOGLE SHEETS
 Endpoint Apps Script: https://script.google.com/macros/s/AKfycbyy7_xqPgOE0Hf5Xk3GaxZ2ucL5iVrG1ydolPnheoj39Qu316GrC8vJkQxmoKGGeNY_VQ/exec
 Pastikan deployment: Execute as Me; Who has access Anyone.
+
+
+YOUTUBE UPDATE
+Video ID: JJhMCCnzaU4
+Privacy Enhanced Mode embed:
+https://www.youtube-nocookie.com/embed/JJhMCCnzaU4?rel=0&modestbranding=1
+
+RSVP Google Sheets dari versi sebelumnya dipertahankan.
