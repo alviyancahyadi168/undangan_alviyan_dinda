@@ -42,7 +42,34 @@ rsvpForm.addEventListener('submit',e=>{
  rsvpForm.target='rsvpSubmitFrame'; rsvpForm.action=RSVP_ENDPOINT; rsvpForm.method='POST';
  rsvpResult.textContent='Mengirim konfirmasi...';
  const btn=rsvpForm.querySelector('button[type="submit"]'); btn.disabled=true; btn.style.opacity='.65';
- rsvpFrame.onload=()=>{rsvpResult.innerHTML=`Terima kasih, <b>${safe(name)}</b>.<br>Konfirmasi Anda sudah dikirim.`;rsvpForm.reset();document.getElementById('guestCount').value=1;btn.disabled=false;btn.style.opacity='1';};
+ rsvpFrame.onload=()=>{rsvpResult.innerHTML=`Terima kasih, <b>${safe(name)}</b>.<br>Konfirmasi Anda sudah dikirim.`;rsvpForm.reset();document.getElementById('guestCount').value=1;btn.disabled=false;btn.style.opacity='1';setTimeout(loadUcapan,1800);};
  rsvpForm.submit();
 });
 function safe(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));}
+
+/* ===== UCAPAN & DOA (ambil data dari Google Apps Script via JSONP) ===== */
+const ucapanList=document.getElementById('ucapanList');
+function loadUcapan(){
+  if(!ucapanList)return;
+  const cbName='ucapanCb_'+Date.now();
+  const timeout=setTimeout(()=>{if(window[cbName]){delete window[cbName];ucapanList.innerHTML='<p class="ucapan-empty">Gagal memuat ucapan. Coba muat ulang halaman.</p>';}},9000);
+  window[cbName]=function(res){
+    clearTimeout(timeout);
+    delete window[cbName];
+    tag.remove();
+    if(!res||res.result!=='success'||!Array.isArray(res.data)||res.data.length===0){
+      ucapanList.innerHTML='<p class="ucapan-empty">Belum ada ucapan. Jadilah yang pertama mengirimkan doa restu!</p>';
+      return;
+    }
+    ucapanList.innerHTML=res.data.map(item=>`
+      <div class="ucapan-item">
+        <div class="ucapan-name">${safe(item.nama||'Tamu')}<span class="ucapan-status">${safe(item.kehadiran||'')}</span></div>
+        <p class="ucapan-text">${safe(item.ucapan||'')}</p>
+      </div>`).join('');
+  };
+  const tag=document.createElement('script');
+  tag.src=RSVP_ENDPOINT+'?callback='+cbName;
+  tag.onerror=()=>{clearTimeout(timeout);ucapanList.innerHTML='<p class="ucapan-empty">Gagal memuat ucapan. Coba muat ulang halaman.</p>';};
+  document.body.appendChild(tag);
+}
+loadUcapan();
