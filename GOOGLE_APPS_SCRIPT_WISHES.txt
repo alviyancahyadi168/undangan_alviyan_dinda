@@ -1,0 +1,95 @@
+GOOGLE APPS SCRIPT - FUNGSI MENAMPILKAN UCAPAN
+================================================
+
+Website sekarang memiliki bagian "Ucapan & Doa" setelah RSVP.
+Agar ucapan dari Google Sheets bisa ditampilkan otomatis, endpoint Apps Script
+harus menyediakan GET dengan format:
+
+?action=wishes&callback=NAMA_CALLBACK
+
+PENTING:
+- Jangan hapus doPost(e) yang sekarang sudah berhasil menerima RSVP.
+- Tambahkan fungsi doGet(e) di project Apps Script yang sama, atau gabungkan
+  dengan doGet yang sudah ada.
+- Spreadsheet ID yang digunakan:
+  1gva4sGj9mdoTFSk9hayveTrIMk5To8wyoIL7oiphkI8
+
+Gunakan fungsi berikut. Fungsi ini membaca header pada baris pertama sehingga
+tidak bergantung pada urutan kolom, selama ada kolom:
+nama, kehadiran, ucapan
+(untuk tanggal/waktu dan jumlah tamu tetap boleh ada).
+
+------------------------------------------------
+function doGet(e) {
+  const p = (e && e.parameter) || {};
+  if (p.action !== 'wishes') {
+    return ContentService
+      .createTextOutput(JSON.stringify({ok:true,message:'RSVP endpoint aktif'}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
+  const ss = SpreadsheetApp.openById('1gva4sGj9mdoTFSk9hayveTrIMk5To8wyoIL7oiphkI8');
+  const sheet = ss.getSheets()[0];
+  const values = sheet.getDataRange().getDisplayValues();
+
+  if (values.length < 2) {
+    return jsonp_(p.callback, {wishes:[]});
+  }
+
+  const headers = values[0].map(h => String(h).trim().toLowerCase());
+  const findCol = names => {
+    for (const n of names) {
+      const i = headers.indexOf(n);
+      if (i !== -1) return i;
+    }
+    return -1;
+  };
+
+  const nameCol = findCol(['nama','name']);
+  const attendanceCol = findCol(['kehadiran','attendance','konfirmasi']);
+  const wishCol = findCol(['ucapan','wishes','wish','pesan','message']);
+
+  const wishes = [];
+  for (let r = values.length - 1; r >= 1; r--) {
+    const row = values[r];
+    const message = wishCol >= 0 ? String(row[wishCol] || '').trim() : '';
+    if (!message) continue;
+
+    wishes.push({
+      nama: nameCol >= 0 ? String(row[nameCol] || '').trim() : 'Tamu',
+      kehadiran: attendanceCol >= 0 ? String(row[attendanceCol] || '').trim() : '',
+      ucapan: message
+    });
+  }
+
+  return jsonp_(p.callback, {wishes:wishes.slice(0,50)});
+}
+
+function jsonp_(callback, data) {
+  const safeCallback = String(callback || 'callback')
+    .replace(/[^a-zA-Z0-9_$.]/g, '');
+  const payload = JSON.stringify(data)
+    .replace(/</g, '\\u003c')
+    .replace(/>/g, '\\u003e')
+    .replace(/&/g, '\\u0026');
+  return ContentService
+    .createTextOutput(safeCallback + '(' + payload + ');')
+    .setMimeType(ContentService.MimeType.JAVASCRIPT);
+}
+------------------------------------------------
+
+Setelah menambahkan fungsi:
+1. Save project.
+2. Deploy > Manage deployments.
+3. Edit deployment Web app.
+4. Execute as: Me.
+5. Who has access: Anyone.
+6. Deploy/update.
+7. Jika URL /exec berubah, ganti RSVP_ENDPOINT di script.js website.
+8. Buka website dan hard refresh.
+
+CATATAN PRIVASI
+Ucapan yang ditampilkan di website akan dapat dibaca oleh siapa pun yang
+membuka link undangan. Karena itu fungsi ini hanya mengambil baris yang
+memiliki isi pada kolom "ucapan". Jangan tampilkan data sensitif lain seperti
+nomor telepon, alamat, atau data internal spreadsheet.

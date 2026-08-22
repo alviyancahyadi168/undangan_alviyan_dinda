@@ -46,3 +46,46 @@ rsvpForm.addEventListener('submit',e=>{
  rsvpForm.submit();
 });
 function safe(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));}
+
+/* WISHES DISPLAY
+   Reads approved/public wishes from the same Google Apps Script endpoint.
+   The endpoint must support: ?action=wishes&callback=...
+*/
+const wishesList=document.getElementById('wishesList');
+const wishesEmpty=document.getElementById('wishesEmpty');
+function escapeHtml(v){
+  return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]);
+}
+function renderWishes(items){
+  if(!wishesList)return;
+  const clean=(Array.isArray(items)?items:[]).filter(x=>String(x.ucapan??x.message??'').trim());
+  if(!clean.length){
+    wishesList.innerHTML='';
+    if(wishesEmpty)wishesEmpty.hidden=false;
+    return;
+  }
+  if(wishesEmpty)wishesEmpty.hidden=true;
+  wishesList.innerHTML=clean.map(x=>{
+    const name=escapeHtml(x.nama??x.name??'Tamu');
+    const message=escapeHtml(x.ucapan??x.message??'');
+    const attendance=escapeHtml(x.kehadiran??x.attendance??'');
+    return `<article class="wish-card"><div class="wish-name">${name}</div>${attendance?`<div class="wish-meta">${attendance}</div>`:''}<div class="wish-message">${message}</div></article>`;
+  }).join('');
+}
+function loadWishes(){
+  if(!wishesList)return;
+  const callback='wishesCallback_'+Date.now();
+  const scriptTag=document.createElement('script');
+  window[callback]=function(data){
+    try{renderWishes(data&&data.wishes?data.wishes:data||[]);}
+    catch(e){wishesList.innerHTML='<div class="wish-error">Ucapan belum dapat ditampilkan.</div>';}
+    finally{delete window[callback];scriptTag.remove();}
+  };
+  scriptTag.onerror=function(){
+    wishesList.innerHTML='<div class="wish-error">Ucapan belum dapat dimuat. Pastikan endpoint RSVP sudah diaktifkan untuk menampilkan ucapan.</div>';
+    delete window[callback];scriptTag.remove();
+  };
+  scriptTag.src=RSVP_ENDPOINT+'?action=wishes&callback='+encodeURIComponent(callback);
+  document.body.appendChild(scriptTag);
+}
+loadWishes();
