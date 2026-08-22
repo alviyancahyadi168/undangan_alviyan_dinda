@@ -1,3 +1,21 @@
+/* ===== NAMA TAMU DARI URL (?to=Nama+Tamu) ===== */
+(function(){
+  const params=new URLSearchParams(window.location.search);
+  const raw=params.get('to')||params.get('kepada')||params.get('nama');
+  if(!raw)return;
+  const name=raw.trim();
+  if(!name)return;
+  const toGuest=document.getElementById('toGuest');
+  const guestNameDisplay=document.getElementById('guestNameDisplay');
+  if(toGuest&&guestNameDisplay){
+    guestNameDisplay.textContent=name;
+    toGuest.style.display='block';
+  }
+  const guestNameInput=document.getElementById('guestName');
+  if(guestNameInput&&!guestNameInput.value)guestNameInput.value=name;
+  document.title='Undangan Pernikahan untuk '+name+' — Alviyan & Dinda';
+})();
+
 const opening=document.getElementById('openInvitation');
 const cover=document.getElementById('coverScreen');
 const music=document.getElementById('music');

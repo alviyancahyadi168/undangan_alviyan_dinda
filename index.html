@@ -14,6 +14,10 @@
   <img class="front-cover" src="cover-depan.png" alt="Undangan Alviyan dan Dinda">
   <div class="cover-bottom">
     <div class="to-line">THE WEDDING OF</div>
+    <div class="to-guest" id="toGuest" style="display:none">
+      <span>Kepada Yth. Bapak/Ibu/Saudara/i</span>
+      <strong id="guestNameDisplay"></strong>
+    </div>
     <button id="openInvitation" class="open-btn">♡ BUKA UNDANGAN ♡</button>
     <div class="cover-date">7 · NOVEMBER · 2026</div>
   </div>
@@ -48,9 +52,9 @@
 <section id="couple" class="section cream">
   <div class="heading"><span>THE COUPLE</span><h2>Dua hati, satu perjalanan</h2><b>❦</b></div>
   <div class="couple">
-    <article><small>PUTRA KETIGA DARI</small><h3>Alm. Johnny Wijaya<br>&amp; Ibu Lauw Lin Nio</h3></article>
+    <article><small>PUTRA DARI</small><h3>Alm. Johnny Wijaya<br>&amp; Ibu Lauw Lin Nio</h3></article>
     <div class="heart">♡</div>
-    <article><small>PUTRI PERTAMA DARI</small><h3>Alm. Bahrudin<br>&amp; Ibu Dahwati Rais</h3></article>
+    <article><small>PUTRI DARI</small><h3>Alm. Bahrudin<br>&amp; Ibu Dahwati Rais</h3></article>
   </div>
   <div class="names"><h3>Alviyan Cahyadi, S.E., M.M.</h3><div>&amp;</div><h3>Dinda Nurul Maulida, S.Si</h3></div>
 </section>
@@ -126,7 +130,7 @@
       <option value="">Konfirmasi kehadiran</option><option>Hadir</option><option>Tidak Hadir</option><option>Masih Ragu</option>
     </select>
     <input id="guestCount" name="jumlah" type="number" min="1" max="10" value="1" required placeholder="Jumlah tamu">
-    <textarea id="guestMessage" name="ucapan" rows="4" maxlength="300" placeholder="Ucapan untuk Alviyan &amp; Dinda"></textarea>
+    <textarea id="guestMessage" name="ucapan" rows="4" maxlength="300" placeholder="Ucapan untuk Alviyan &amp; Dinda (opsional)"></textarea>
     <input type="hidden" name="sumber" value="Website Undangan Alviyan &amp; Dinda">
     <button class="btn" type="submit">Kirim Konfirmasi</button>
   </form>
@@ -148,7 +152,7 @@
   <div>❀</div><h2>Alviyan <i>&amp;</i> Dinda</h2><p>7 · 11 · 2026</p>
 </footer>
 </div>
-  
+
 <script src="script.js"></script>
 </body>
 </html>
