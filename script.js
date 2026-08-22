@@ -49,6 +49,18 @@ function safe(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;'
 
 /* ===== UCAPAN & DOA (ambil data dari Google Apps Script via JSONP) ===== */
 const ucapanList=document.getElementById('ucapanList');
+const ucapanViewport=document.getElementById('ucapanViewport');
+const AUTO_SCROLL_MIN=4; // minimal jumlah ucapan sebelum mode ticker aktif
+const SECONDS_PER_ITEM=4.2; // makin besar = makin pelan
+
+function renderUcapanItems(list){
+  return list.map(item=>`
+      <div class="ucapan-item">
+        <div class="ucapan-name">${safe(item.nama||'Tamu')}<span class="ucapan-status">${safe(item.kehadiran||'')}</span></div>
+        <p class="ucapan-text">${safe(item.ucapan||'')}</p>
+      </div>`).join('');
+}
+
 function loadUcapan(){
   if(!ucapanList)return;
   const cbName='ucapanCb_'+Date.now();
@@ -57,19 +69,29 @@ function loadUcapan(){
     clearTimeout(timeout);
     delete window[cbName];
     tag.remove();
+    ucapanList.classList.remove('scrolling','paused');
+    ucapanList.style.animationDuration='';
     if(!res||res.result!=='success'||!Array.isArray(res.data)||res.data.length===0){
       ucapanList.innerHTML='<p class="ucapan-empty">Belum ada ucapan. Jadilah yang pertama mengirimkan doa restu!</p>';
       return;
     }
-    ucapanList.innerHTML=res.data.map(item=>`
-      <div class="ucapan-item">
-        <div class="ucapan-name">${safe(item.nama||'Tamu')}<span class="ucapan-status">${safe(item.kehadiran||'')}</span></div>
-        <p class="ucapan-text">${safe(item.ucapan||'')}</p>
-      </div>`).join('');
+    const itemsHTML=renderUcapanItems(res.data);
+    if(res.data.length>=AUTO_SCROLL_MIN){
+      ucapanList.innerHTML=itemsHTML+itemsHTML; // digandakan agar loop mulus
+      ucapanList.style.animationDuration=(res.data.length*SECONDS_PER_ITEM)+'s';
+      ucapanList.classList.add('scrolling');
+    }else{
+      ucapanList.innerHTML=itemsHTML;
+    }
   };
   const tag=document.createElement('script');
   tag.src=RSVP_ENDPOINT+'?callback='+cbName;
   tag.onerror=()=>{clearTimeout(timeout);ucapanList.innerHTML='<p class="ucapan-empty">Gagal memuat ucapan. Coba muat ulang halaman.</p>';};
   document.body.appendChild(tag);
+}
+if(ucapanViewport){
+  ucapanViewport.addEventListener('click',()=>{
+    if(ucapanList.classList.contains('scrolling'))ucapanList.classList.toggle('paused');
+  });
 }
 loadUcapan();
