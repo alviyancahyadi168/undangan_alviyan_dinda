@@ -5,7 +5,7 @@
 .cover-screen.hide{opacity:0;visibility:hidden;pointer-events:none}.cover-shine{position:absolute;inset:0;background:radial-gradient(circle at 50% 42%,rgba(255,255,255,.28),transparent 42%);pointer-events:none;z-index:1}
 .front-cover{width:100%;height:100%;object-fit:cover}.cover-bottom{position:absolute;z-index:3;bottom:34px;left:50%;transform:translateX(-50%);text-align:center;color:#fff;filter:drop-shadow(0 2px 9px rgba(60,40,20,.65))}
 .to-line,.cover-date{font-size:10px;letter-spacing:.28em}.cover-date{margin-top:10px}
-.to-guest{margin:14px auto 4px;max-width:88vw;width:max-content;padding:14px 30px;background:linear-gradient(135deg,rgba(40,28,17,.62),rgba(60,42,24,.62));backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);border:1px solid rgba(230,197,140,.65);border-radius:16px;box-shadow:0 12px 32px rgba(0,0,0,.28)}
+.to-guest{margin:14px auto 4px;max-width:88vw;width:max-content;padding:14px 30px;background:linear-gradient(135deg,rgba(32,22,13,.94),rgba(48,33,18,.94));backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);border:1px solid rgba(230,197,140,.65);border-radius:16px;box-shadow:0 12px 32px rgba(0,0,0,.35)}
 .to-guest span{display:block;font-size:9px;letter-spacing:.18em;color:#f3e6d2;opacity:.95}
 .to-guest strong{display:block;font:600 clamp(22px,5vw,30px) 'Cormorant Garamond',serif;margin-top:7px;letter-spacing:.02em;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.35)}
 .to-guest strong:before,.to-guest strong:after{content:"❦";color:var(--gold);font-size:.55em;vertical-align:middle;margin:0 10px;opacity:.9}
