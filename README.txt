@@ -72,14 +72,3 @@ Privacy Enhanced Mode embed:
 https://www.youtube-nocookie.com/embed/JJhMCCnzaU4?rel=0&modestbranding=1
 
 RSVP Google Sheets dari versi sebelumnya dipertahankan.
-
-
-FITUR UCAPAN & DOA
-==================
-Ditambahkan section "Ucapan & Doa" setelah RSVP dan sebelum footer.
-Ucapan dibaca dari Google Sheets melalui Apps Script dengan JSONP.
-Petunjuk update Apps Script ada di GOOGLE_APPS_SCRIPT_WISHES.txt.
-
-Setelah doGet untuk action=wishes aktif, setiap ucapan yang sudah tersimpan
-di Google Sheets akan muncul otomatis di website. Tampilan menampilkan nama,
-status kehadiran (jika tersedia), dan ucapan. Maksimal 50 ucapan terbaru.
